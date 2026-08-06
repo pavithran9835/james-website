@@ -1,0 +1,121 @@
+import type { Config } from "tailwindcss";
+
+// Design tokens ported 1:1 from design/organic_apothecary_modern/DESIGN.md
+// and the repeated tailwind.config block in every design/*/code.html mockup.
+const config: Config = {
+  darkMode: "class",
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
+  theme: {
+    extend: {
+      colors: {
+        "inverse-primary": "#b4cdb8",
+        "on-secondary-fixed": "#40000c",
+        "surface-container-low": "#f5f3ee",
+        "secondary-fixed-dim": "#ffb3b6",
+        outline: "#737973",
+        "on-tertiary": "#ffffff",
+        "tertiary-container": "#3a2800",
+        "primary-fixed-dim": "#b4cdb8",
+        "outline-variant": "#c3c8c1",
+        "surface-container-highest": "#e4e2dd",
+        "inverse-surface": "#30312e",
+        "inverse-on-surface": "#f2f1ec",
+        "on-primary-container": "#819986",
+        "surface-dim": "#dbdad5",
+        secondary: "#9b4149",
+        "tertiary-fixed": "#ffdea5",
+        "on-background": "#1b1c19",
+        "on-error": "#ffffff",
+        "on-tertiary-fixed-variant": "#5d4201",
+        "surface-container-lowest": "#ffffff",
+        "on-tertiary-fixed": "#261900",
+        "surface-container": "#f0eee9",
+        surface: "#fbf9f4",
+        "surface-container-high": "#eae8e3",
+        background: "#fbf9f4",
+        "on-secondary-fixed-variant": "#7d2a33",
+        "tertiary-fixed-dim": "#e9c176",
+        "on-primary-fixed-variant": "#364c3c",
+        "surface-bright": "#fbf9f4",
+        primary: "#061b0e",
+        "secondary-container": "#fd8e95",
+        "on-secondary": "#ffffff",
+        "error-container": "#ffdad6",
+        "on-secondary-container": "#76252e",
+        "on-primary": "#ffffff",
+        "on-surface": "#1b1c19",
+        "surface-tint": "#4d6453",
+        error: "#ba1a1a",
+        "on-surface-variant": "#434843",
+        "on-primary-fixed": "#0b2013",
+        "on-tertiary-container": "#b18d48",
+        "primary-fixed": "#d0e9d4",
+        "on-error-container": "#93000a",
+        "surface-variant": "#e4e2dd",
+        "primary-container": "#1b3022",
+        tertiary: "#211500",
+        "secondary-fixed": "#ffdada",
+      },
+      borderRadius: {
+        DEFAULT: "0.125rem",
+        lg: "0.25rem",
+        xl: "0.5rem",
+        full: "0.75rem",
+      },
+      spacing: {
+        "margin-mobile": "16px",
+        unit: "8px",
+        "margin-desktop": "64px",
+        gutter: "24px",
+        "container-max": "1280px",
+      },
+      fontFamily: {
+        "body-md": ["var(--font-montserrat)"],
+        "label-caps": ["var(--font-montserrat)"],
+        "headline-lg-mobile": ["var(--font-playfair)"],
+        "display-lg": ["var(--font-playfair)"],
+        "headline-md": ["var(--font-playfair)"],
+        "headline-lg": ["var(--font-playfair)"],
+        "body-lg": ["var(--font-montserrat)"],
+      },
+      fontSize: {
+        "body-md": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+        "label-caps": [
+          "12px",
+          { lineHeight: "1.0", letterSpacing: "0.1em", fontWeight: "600" },
+        ],
+        "headline-lg-mobile": [
+          "32px",
+          { lineHeight: "1.2", fontWeight: "600" },
+        ],
+        "display-lg": [
+          "64px",
+          { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" },
+        ],
+        "headline-md": ["28px", { lineHeight: "1.3", fontWeight: "500" }],
+        "headline-lg": ["40px", { lineHeight: "1.2", fontWeight: "600" }],
+        "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+      },
+      maxWidth: {
+        "container-max": "1280px",
+      },
+      keyframes: {
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
+        },
+        kenburns: {
+          from: { transform: "scale(1.1)" },
+          to: { transform: "scale(1)" },
+        },
+      },
+      animation: {
+        marquee: "marquee 40s linear infinite",
+        kenburns: "kenburns 16s cubic-bezier(0.22, 1, 0.36, 1) both",
+      },
+    },
+  },
+  plugins: [],
+};
+
+export default config;
