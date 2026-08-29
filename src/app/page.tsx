@@ -5,9 +5,7 @@ import { Icon } from "@/components/ui/Icon";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
-import { Stagger, StaggerItem } from "@/components/ui/Stagger";
 import { ParallaxLayer } from "@/components/ui/ParallaxLayer";
-import { WordReveal } from "@/components/ui/WordReveal";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { ImageReveal } from "@/components/ui/ImageReveal";
@@ -132,39 +130,36 @@ export default function HomePage() {
         <div className="absolute inset-0 z-0 bg-gradient-to-r from-surface via-surface/40 to-transparent" />
 
         <div className="relative z-10 w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
-          <Stagger className="max-w-2xl">
-            <StaggerItem>
+          {/* CSS-only entrance (hero-rise) so the LCP heading and copy paint
+              before JS hydration — critical for mobile performance scores. */}
+          <div className="max-w-2xl">
+            <div className="hero-reveal">
               <Eyebrow withRule className="mb-6">
                 Single-Origin · Cold-Milled · Lab Tested
               </Eyebrow>
-            </StaggerItem>
-            <StaggerItem>
-              <h1 className="font-display-lg text-headline-lg-mobile md:text-display-lg text-primary leading-none mb-8">
-                <WordReveal as="span" text="Organic Beetroot" delay={0.2} className="block" />
-                <WordReveal
-                  as="span"
-                  text="Powder, Perfected."
-                  delay={0.4}
-                  className="block italic font-light"
-                />
-              </h1>
-            </StaggerItem>
-            <StaggerItem>
-              <p className="font-body-lg text-body-lg text-on-surface-variant mb-12 max-w-lg leading-relaxed">
-                One scoop of cold-milled beetroot powder delivers ~250mg of
-                dietary nitrate for nitric oxide, heart health, and endurance —
-                third-party lab tested, with nothing else in the jar.
-              </p>
-            </StaggerItem>
-            <StaggerItem className="flex flex-wrap items-center gap-6">
+            </div>
+            <h1 className="font-display-lg text-headline-lg-mobile md:text-display-lg text-primary leading-none mb-8">
+              <span className="hero-reveal [animation-delay:0.1s] block">
+                Organic Beetroot
+              </span>
+              <span className="hero-reveal [animation-delay:0.2s] block italic font-light">
+                Powder, Perfected.
+              </span>
+            </h1>
+            <p className="hero-reveal [animation-delay:0.3s] font-body-lg text-body-lg text-on-surface-variant mb-12 max-w-lg leading-relaxed">
+              One scoop of cold-milled beetroot powder delivers ~250mg of
+              dietary nitrate for nitric oxide, heart health, and endurance —
+              third-party lab tested, with nothing else in the jar.
+            </p>
+            <div className="hero-reveal [animation-delay:0.4s] flex flex-wrap items-center gap-6">
               <MagneticButton href="/shop/beetroot-powder">
                 Shop Beetroot Powder <Icon name="arrow_forward" className="text-base" />
               </MagneticButton>
               <MagneticButton href="/ingredients/beetroot" variant="ghost">
                 Read the Science
               </MagneticButton>
-            </StaggerItem>
-          </Stagger>
+            </div>
+          </div>
         </div>
 
         <a
