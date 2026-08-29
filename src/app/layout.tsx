@@ -69,15 +69,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <head>
         {/* Material Symbols is self-hosted as a 40KB variable-font subset —
-            see the @font-face in globals.css. No Google Fonts requests at
-            runtime (next/font already self-hosts the text fonts too). */}
-        <link
-          rel="preload"
-          href="/fonts/material-symbols-subset.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
+            see the @font-face in globals.css. Not preloaded on purpose:
+            icons are non-critical and would compete with the hero image
+            for bandwidth before first paint. */}
         {/* Reveal animations serialize a hidden initial state (opacity/transform)
             into the SSR HTML. Without JS nothing would ever become visible, so
             crawlers or users with JS disabled get the content un-hidden here. */}
