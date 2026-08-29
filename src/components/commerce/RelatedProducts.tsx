@@ -12,7 +12,7 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
   return (
     <section className="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
       <Reveal>
-        <h2 className="font-headline-lg text-headline-lg text-primary mb-12">
+        <h2 className="font-headline-lg text-headline-md md:text-headline-lg text-primary mb-12">
           You Might Also Like
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">

@@ -9,7 +9,7 @@ export function Marquee() {
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32 bg-gradient-to-r from-surface-container-low to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l from-surface-container-low to-transparent" />
 
-      <div className="flex w-max animate-marquee gap-12 hover:[animation-play-state:paused]">
+      <div className="flex w-max animate-marquee gap-12 hover:[animation-play-state:paused] motion-reduce:[animation-play-state:paused]">
         {row.map((item, i) => (
           <span
             key={i}

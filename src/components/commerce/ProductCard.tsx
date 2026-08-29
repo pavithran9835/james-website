@@ -25,7 +25,7 @@ export function ProductCard({
     return (
       <div
         className={clsx(
-          "group relative h-full min-h-[400px] bg-primary flex items-center justify-center p-12 text-center text-surface overflow-hidden",
+          "group relative h-full min-h-[400px] bg-primary flex items-center justify-center p-6 md:p-12 text-center text-surface overflow-hidden",
           className,
         )}
       >
@@ -39,7 +39,7 @@ export function ProductCard({
           <p className="text-body-md text-surface/80 mb-8 max-w-xs mx-auto">
             {product.description}
           </p>
-          <div className="flex items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <AddToCartButton
               productId={product.id}
               label={`Add Bundle — $${product.price}`}
@@ -183,7 +183,7 @@ export function ProductCard({
             />
           )}
           <div className="absolute top-6 left-6">
-            <span className="bg-surface/90 backdrop-blur px-4 py-2 text-[10px] font-label-caps uppercase tracking-widest border border-outline-variant">
+            <span className="bg-surface/90 backdrop-blur px-4 py-2 text-xs font-label-caps uppercase tracking-widest border border-outline-variant">
               {product.badge ?? product.benefitLabel}
             </span>
           </div>

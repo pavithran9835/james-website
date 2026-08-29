@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "motion/react";
+import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 
 interface CountUpProps {
   value: number;
@@ -14,10 +15,14 @@ interface CountUpProps {
 export function CountUp({ value, prefix = "", suffix = "", duration = 1.2, className }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.6 });
-  const [display, setDisplay] = useState(0);
+  const reducedMotion = usePrefersReducedMotion();
+  // Initialize to the final value so the real stat is present in server HTML
+  // (SEO / no-JS). The count-up animation only starts once in view; with
+  // reduced motion the final value simply stays put.
+  const [display, setDisplay] = useState(value);
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!isInView || reducedMotion) return;
 
     let frame: number;
     const start = performance.now();
@@ -34,7 +39,7 @@ export function CountUp({ value, prefix = "", suffix = "", duration = 1.2, class
 
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
-  }, [isInView, value, duration]);
+  }, [isInView, reducedMotion, value, duration]);
 
   return (
     <span ref={ref} className={className}>

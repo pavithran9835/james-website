@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "motion/react";
+import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
+import clsx from "clsx";
 import type { ReactNode } from "react";
 
 const containerVariants = {
@@ -25,6 +27,12 @@ interface StaggerProps {
 }
 
 export function Stagger({ children, className }: StaggerProps) {
+  const reducedMotion = usePrefersReducedMotion();
+
+  if (reducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
       className={className}
@@ -38,8 +46,14 @@ export function Stagger({ children, className }: StaggerProps) {
 }
 
 export function StaggerItem({ children, className }: StaggerProps) {
+  const reducedMotion = usePrefersReducedMotion();
+
+  if (reducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
-    <motion.div className={className} variants={itemVariants}>
+    <motion.div className={clsx("js-reveal", className)} variants={itemVariants}>
       {children}
     </motion.div>
   );

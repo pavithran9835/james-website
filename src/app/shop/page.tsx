@@ -4,11 +4,19 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Stagger, StaggerItem } from "@/components/ui/Stagger";
 import { FilterBar } from "@/components/commerce/FilterBar";
 import { products } from "@/lib/data/products";
+import { pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Product Gallery",
+  title: "Shop Organic Superfood Powders",
   description:
-    "Clean, scientific formulas derived from the world's most potent botanicals. No fillers, no synthetics — just concentrated wellness.",
+    "Shop organic beetroot powder, moringa, and amla — cold-milled, third-party lab tested, no fillers. Single botanicals and curated bundles.",
+  alternates: { canonical: "/shop" },
+  ...pageOpenGraph({
+    title: "Shop Organic Superfood Powders",
+    description:
+      "Shop organic beetroot powder, moringa, and amla — cold-milled, third-party lab tested, no fillers. Single botanicals and curated bundles.",
+    path: "/shop",
+  }),
 };
 
 const benefits = [
@@ -44,21 +52,23 @@ export default function ShopPage() {
           </StaggerItem>
           <StaggerItem>
             <h1 className="text-headline-lg-mobile md:text-display-lg font-display-lg text-primary mb-6">
-              Purity in Every Scoop
+              The Botanical Collection
             </h1>
           </StaggerItem>
           <StaggerItem>
             <p className="max-w-2xl mx-auto text-body-lg text-on-surface-variant">
-              Clean, scientific formulas derived from the world&apos;s most potent
-              botanicals. No fillers, no synthetics—just concentrated wellness.
+              Organic beetroot powder — our flagship — alongside moringa, amla,
+              and curated bundles. Cold-milled, lab tested, and nothing else in
+              the jar.
             </p>
           </StaggerItem>
         </Stagger>
       </header>
 
-      <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pb-32">
+      {/* The root layout already renders <main>; a nested main is invalid. */}
+      <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pb-16 md:pb-32">
         <FilterBar products={products} />
-      </main>
+      </div>
 
       <section className="py-32 bg-surface-container-low">
         <Reveal

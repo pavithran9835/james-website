@@ -40,6 +40,7 @@ export function TiltCard({
   const glow = useMotionTemplate`radial-gradient(420px circle at ${glowX}% ${glowY}%, ${glowColor}, transparent 65%)`;
 
   function handlePointerMove(event: PointerEvent<HTMLDivElement>) {
+    if (event.pointerType !== "mouse") return;
     const bounds = event.currentTarget.getBoundingClientRect();
     x.set((event.clientX - bounds.left) / bounds.width);
     y.set((event.clientY - bounds.top) / bounds.height);

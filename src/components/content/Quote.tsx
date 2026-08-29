@@ -7,7 +7,7 @@ interface QuoteProps {
 export function Quote({ quote, author, role }: QuoteProps) {
   return (
     <div className="max-w-[1000px] mx-auto px-margin-mobile md:px-margin-desktop text-center space-y-10">
-      <blockquote className="font-headline-lg text-headline-lg italic text-primary leading-relaxed">
+      <blockquote className="font-headline-lg text-headline-md md:text-headline-lg italic text-primary leading-relaxed">
         &ldquo;{quote}&rdquo;
       </blockquote>
       <div className="flex flex-col items-center">

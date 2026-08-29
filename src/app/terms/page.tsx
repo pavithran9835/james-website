@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
-import { site } from "@/lib/seo";
+import { site, pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
   description: `The terms governing your use of the ${site.name} website.`,
+  alternates: { canonical: "/terms" },
+  ...pageOpenGraph({
+    title: "Terms of Service",
+    description: `The terms governing your use of the ${site.name} website.`,
+    path: "/terms",
+  }),
 };
 
 const sections = [

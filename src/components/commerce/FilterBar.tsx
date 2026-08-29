@@ -35,7 +35,7 @@ export function FilterBar({ products }: FilterBarProps) {
               type="button"
               onClick={() => setActive(filter.value)}
               className={clsx(
-                "px-8 py-3 rounded-full border text-label-caps font-label-caps transition-all duration-300",
+                "px-8 py-3 min-h-[44px] rounded-full border text-label-caps font-label-caps transition-all duration-300",
                 isActive
                   ? "bg-primary text-surface border-primary"
                   : "border-outline-variant hover:border-primary",
@@ -47,7 +47,7 @@ export function FilterBar({ products }: FilterBarProps) {
         })}
       </div>
 
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={active}
           initial={{ opacity: 0, y: 12 }}

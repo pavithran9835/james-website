@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
-import { site } from "@/lib/seo";
+import { site, pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: `How ${site.name} collects, uses, and protects your information.`,
+  alternates: { canonical: "/privacy" },
+  ...pageOpenGraph({
+    title: "Privacy Policy",
+    description: `How ${site.name} collects, uses, and protects your information.`,
+    path: "/privacy",
+  }),
 };
 
 const sections = [

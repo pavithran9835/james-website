@@ -1,4 +1,5 @@
 import { products } from "@/lib/data/products";
+import { articles } from "@/lib/data/articles";
 
 export interface SearchEntry {
   id: string;
@@ -22,7 +23,7 @@ const guideEntries: SearchEntry[] = [
     type: "Guide",
     title: "Beetroot: The Heart's Best Friend",
     description:
-      "The vascular science of Beta Vulgaris — nitric oxide, blood pressure, and stamina.",
+      "The vascular science of Beta Vulgaris — nitric oxide, circulation, and stamina.",
     href: "/ingredients/beetroot",
   },
   {
@@ -43,7 +44,19 @@ const productEntries: SearchEntry[] = products.map((product) => ({
   href: `/shop/${product.slug}`,
 }));
 
-export const searchIndex: SearchEntry[] = [...productEntries, ...guideEntries];
+const articleEntries: SearchEntry[] = articles.map((article) => ({
+  id: `article-${article.slug}`,
+  type: "Guide",
+  title: article.title,
+  description: article.excerpt,
+  href: `/learn/${article.slug}`,
+}));
+
+export const searchIndex: SearchEntry[] = [
+  ...productEntries,
+  ...articleEntries,
+  ...guideEntries,
+];
 
 export function search(query: string): SearchEntry[] {
   const normalized = query.trim().toLowerCase();

@@ -1,10 +1,10 @@
 export const marqueeItems = [
   "100% Organic",
-  "Chemical Free",
-  "Farm Fresh",
-  "Lab Tested",
-  "Export Quality",
+  "~250mg Nitrate Per Scoop",
+  "Cold-Milled",
+  "Third-Party Lab Tested",
+  "Single-Origin Beets",
+  "No Fillers, Ever",
   "Sustainably Farmed",
-  "USDA Certified",
-  "Nitrogen Packed",
+  "Vegan Friendly",
 ];

@@ -8,18 +8,26 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Stagger, StaggerItem } from "@/components/ui/Stagger";
 import { ParallaxLayer } from "@/components/ui/ParallaxLayer";
 import { StatRow } from "@/components/content/StatRow";
+import { pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Beetroot: The Heart's Best Friend",
   description:
     "Unlocking the ancient vascular secrets of Beta Vulgaris. A clinical exploration into the life-giving properties of the deep burgundy root.",
+  alternates: { canonical: "/ingredients/beetroot" },
+  ...pageOpenGraph({
+    title: "Beetroot: The Heart's Best Friend",
+    description:
+      "Unlocking the ancient vascular secrets of Beta Vulgaris. A clinical exploration into the life-giving properties of the deep burgundy root.",
+    path: "/ingredients/beetroot", image: "/images/beetroot.jpg",
+  }),
 };
 
 export default function BeetrootPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-[75vh] flex flex-col justify-center overflow-hidden bg-surface-container-low">
+      <section className="relative min-h-[75svh] flex flex-col justify-center overflow-hidden bg-surface-container-low">
         <div className="absolute inset-0 z-0 opacity-10 flex justify-end items-end pointer-events-none">
           <Icon
             name="nature"
@@ -57,7 +65,7 @@ export default function BeetrootPage() {
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1B3qRXczdJpvEGeoPDLN41a0LkZFFNh4fXXvZgpPyWD7inowRKmwPosmpL2pxFMbgF7TjKXd-5G5fYnfMQUgBxNSZA3c-lQoRM5rR7juotBL_LtkQTyev3sf2ujkj9sMPaL4_1yf8lvB5Wb2QtobmVNATEtOLavAJivMRF9Jv05qHQBG5Wwb4-96hRy9y2gi-7Wk-ltkd7s8jf3-5BKuibhNoj9C9nfOGfyj216oi6BrsyvWdtJFQdg"
                   alt="Professional studio macro photography of a halved organic beetroot on a clean minimalist surface. The deep burgundy concentric rings of the beet are visible, glistening with fresh moisture."
                   fill
-                  priority
+                  preload
                   sizes="(min-width: 768px) 50vw, 100vw"
                   className="object-cover"
                 />
@@ -68,32 +76,33 @@ export default function BeetrootPage() {
       </section>
 
       {/* Benefits bento */}
-      <section id="mechanisms" className="py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+      <section id="mechanisms" className="py-16 md:py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
         <Reveal as="section">
           <div className="text-center mb-20 space-y-4">
             <h2 className="font-headline-lg text-headline-lg text-primary">
               Mechanisms of Efficacy
             </h2>
             <p className="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">
-              Peer-reviewed benefits derived from bioactive compounds found
-              exclusively in organic beetroot concentrates.
+              Grounded in research on dietary nitrate and betalains — the
+              bioactive compounds beetroot carries in unusual abundance.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="group bg-surface-container-high p-10 space-y-6 hover:bg-secondary transition-all duration-500">
+            <div className="group bg-surface-container-high p-6 md:p-10 space-y-6 hover:bg-secondary transition-all duration-500">
               <div className="w-12 h-12 flex items-center justify-center border border-secondary group-hover:border-surface transition-colors">
                 <Icon name="favorite" fill className="text-secondary group-hover:text-surface" />
               </div>
               <h3 className="font-headline-md text-headline-md text-primary group-hover:text-surface">
-                Blood Pressure Control
+                Healthy Circulation
               </h3>
               <p className="font-body-md text-on-surface-variant group-hover:text-surface/80">
-                Dietary nitrates transform into nitric oxide, helping blood
-                vessels relax and dilate for optimal pressure regulation.
+                Dietary nitrates convert into nitric oxide, helping blood
+                vessels relax — supporting healthy circulation and blood
+                pressure already in the normal range.
               </p>
             </div>
 
-            <div className="bg-primary p-10 space-y-6 relative overflow-hidden">
+            <div className="bg-primary p-6 md:p-10 space-y-6 relative overflow-hidden">
               <div className="relative z-10">
                 <div className="w-12 h-12 flex items-center justify-center border border-inverse-primary mb-6">
                   <Icon name="bolt" fill className="text-inverse-primary" />
@@ -110,7 +119,7 @@ export default function BeetrootPage() {
               <Icon name="science" className="!text-[160px] absolute -right-8 -bottom-8 opacity-10" />
             </div>
 
-            <div className="group bg-surface-container-high p-10 space-y-6 hover:bg-secondary transition-all duration-500">
+            <div className="group bg-surface-container-high p-6 md:p-10 space-y-6 hover:bg-secondary transition-all duration-500">
               <div className="w-12 h-12 flex items-center justify-center border border-secondary group-hover:border-surface transition-colors">
                 <Icon name="exercise" fill className="text-secondary group-hover:text-surface" />
               </div>
@@ -118,8 +127,9 @@ export default function BeetrootPage() {
                 Physical Stamina
               </h3>
               <p className="font-body-md text-on-surface-variant group-hover:text-surface/80">
-                Clinical studies show improved cardiorespiratory endurance and
-                extended time to exhaustion during high-intensity tasks.
+                Research on dietary nitrate consistently links it to
+                cardiorespiratory endurance and time to exhaustion during
+                sustained effort.
               </p>
             </div>
           </div>
@@ -127,7 +137,7 @@ export default function BeetrootPage() {
       </section>
 
       {/* Nutritional profile */}
-      <section className="bg-surface-container-highest py-32">
+      <section className="bg-surface-container-highest py-16 md:py-32">
         <Reveal
           as="section"
           className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-24 items-center"
@@ -142,12 +152,12 @@ export default function BeetrootPage() {
                 className="object-cover"
               />
             </div>
-            <div className="absolute -bottom-8 -right-8 bg-secondary-container p-8 max-w-xs shadow-xl">
+            <div className="static mt-6 mx-0 md:absolute md:-bottom-8 md:-right-8 md:mt-0 bg-secondary-container p-8 max-w-xs shadow-xl">
               <p className="font-headline-md text-on-secondary-container italic">
                 &ldquo;A nutritional powerhouse for the modern era.&rdquo;
               </p>
               <p className="font-label-caps text-label-caps mt-4 text-on-secondary-container/70">
-                — Dr. Elara Vance, Chief Bio-Scientist
+                — The Apothecary Wellness Standard
               </p>
             </div>
           </div>
@@ -188,7 +198,7 @@ export default function BeetrootPage() {
       </section>
 
       {/* Lifestyle integration */}
-      <section className="py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto overflow-hidden">
+      <section className="py-16 md:py-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto overflow-hidden">
         <Reveal as="section" className="flex flex-col lg:flex-row gap-16 items-stretch">
           <div className="lg:w-1/3 flex flex-col justify-center space-y-8">
             <h2 className="font-headline-lg text-headline-lg text-primary leading-tight">
@@ -203,13 +213,13 @@ export default function BeetrootPage() {
             </p>
             <Link
               className="inline-flex items-center gap-2 font-label-caps text-label-caps text-primary border-b border-primary w-fit pb-1 hover:text-secondary hover:border-secondary transition-colors"
-              href="/shop"
+              href="/learn/how-to-use-beetroot-powder"
             >
-              View Ritual Guide <Icon name="arrow_forward" />
+              Read the Usage Guide <Icon name="arrow_forward" />
             </Link>
           </div>
-          <div className="lg:w-2/3 grid grid-cols-2 gap-4 h-[500px]">
-            <div className="relative rounded-sm overflow-hidden">
+          <div className="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-4 h-auto lg:h-[500px]">
+            <div className="relative aspect-[4/3] lg:aspect-auto rounded-sm overflow-hidden">
               <Image
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjGROKpHtrk25_sK35SXR5_yhd-GZr3-afgR9lLlMU5L47OqsVe6tePm_SKByrZPMdLnTBhW1gOocMpFvbIDTTVjbleOWeVUP6rZa2XV4-wlydI4UWJ-Y7x4ONwAzBAxpMDPy9D5z119FAKXEPiAjwbRYWllxS4mxpQoygdOjKz_2sU6tW47H2doTKrefvqeHH7aVWIxa1aV8WyuMRiIxbI38TB9hODmJwxSLQlbd847-u9_Otil0vMg"
                 alt="A lifestyle shot of a high-end, minimalist kitchen counter with a tall crystalline glass of deep red beetroot juice."
@@ -219,7 +229,7 @@ export default function BeetrootPage() {
               />
             </div>
             <div className="flex flex-col gap-4">
-              <div className="relative h-1/2 rounded-sm overflow-hidden">
+              <div className="relative aspect-[4/3] lg:aspect-auto lg:h-1/2 rounded-sm overflow-hidden">
                 <Image
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyd4EHHzcdu4gGg-x878on6KB6vx3lz0fMJptrihZq_8uN3csz3eYviaIpAx7ZLwXvC3Px9PxwuDOiJ2s3dUAvrEmahoEemumI-vZIdaZ2H_H4p5PHmFqV0CGMlPbADbQeKBDkBzAiTSjwLXOEXexYVmOss15YBMhS_v7neq4eQIyj9VfMzpMl0zyEZzNogYO9AXDcuJ7J1imA-jhto-nyvNxap81m2OCGw6AEiUCxE5ZHG37mUIEQug"
                   alt="A close-up of a runner's hand reaching for a sleek, dark-toned apothecary bottle in a soft-focus urban park at sunrise."
@@ -228,7 +238,7 @@ export default function BeetrootPage() {
                   className="object-cover"
                 />
               </div>
-              <div className="relative h-1/2 rounded-sm overflow-hidden">
+              <div className="relative aspect-[4/3] lg:aspect-auto lg:h-1/2 rounded-sm overflow-hidden">
                 <Image
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVUU2mkMvhREoBiqIjPmOxQQUD8sFKcrnMRuAn_woxcFhM6cKu0h5Edt8TIwDr_qmaA288oWpU25eNvAXBSuRf8Y-DJWYLJU4C3qaL8y2Uhp5iM5UYmOeqC8PalE8JSzFdGloD8ZqIy1u77bC0zRtRXuQuw6PIibCxlrYLB3vCANHK6G1jfa76Aq91KXWVtLXujaDGzSMPorAQRmPmqjHDRCz4bTp4E6d8PRmvJjyr9JxaDuGjZvgVFw"
                   alt="Macro texture of fine, deep burgundy beetroot powder spiraling in clear water, creating an artistic, cloud-like aesthetic."
@@ -243,17 +253,17 @@ export default function BeetrootPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-primary text-surface py-32 relative overflow-hidden">
+      <section className="bg-primary text-surface py-16 md:py-32 relative overflow-hidden">
         <Reveal className="relative z-10 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center space-y-8">
           <h2 className="font-display-lg text-headline-lg md:text-display-lg max-w-3xl mx-auto">
             Enhance your cardiovascular vitality today.
           </h2>
           <div className="flex justify-center">
             <Button
-              href="/shop"
+              href="/shop/beetroot-powder"
               className="!bg-surface !text-primary !px-12 !py-5 uppercase tracking-[0.3em] font-bold hover:!bg-secondary-fixed shadow-xl"
             >
-              Shop Beetroot Collection
+              Shop Beetroot Powder — $42
             </Button>
           </div>
         </Reveal>

@@ -10,28 +10,46 @@ import { MobileStickyCta } from "@/components/commerce/MobileStickyCta";
 import { NutritionTable } from "@/components/content/NutritionTable";
 import { FaqAccordion } from "@/components/content/FaqAccordion";
 import { CertificationBadges } from "@/components/content/CertificationBadges";
+import { JsonLd } from "@/lib/jsonld";
+import { site, absoluteUrl } from "@/lib/seo";
 import { products } from "@/lib/data/products";
-
-interface ProductPageProps {
-  params: Promise<{ slug: string }>;
-}
 
 export function generateStaticParams() {
   return products.map((product) => ({ slug: product.slug }));
 }
 
-export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps<"/shop/[slug]">): Promise<Metadata> {
   const { slug } = await params;
   const product = products.find((p) => p.slug === slug);
   if (!product) return {};
 
+  const title = `${product.name} — ${product.benefitLabel}`;
+  const ogImage = product.image?.src ?? site.ogImage;
+
   return {
-    title: product.name,
+    title,
     description: product.description,
+    alternates: { canonical: `/shop/${slug}` },
+    openGraph: {
+      title,
+      description: product.description,
+      url: `/shop/${slug}`,
+      type: "website",
+      siteName: site.name,
+      images: [{ url: ogImage, alt: product.image?.alt ?? product.name }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: product.description,
+      images: [ogImage],
+    },
   };
 }
 
-export default async function ProductPage({ params }: ProductPageProps) {
+export default async function ProductPage({ params }: PageProps<"/shop/[slug]">) {
   const { slug } = await params;
   const product = products.find((p) => p.slug === slug);
 
@@ -45,24 +63,71 @@ export default async function ProductPage({ params }: ProductPageProps) {
       (p.ingredient === product.ingredient || p.benefitTag === product.benefitTag),
   ).slice(0, 3);
 
+  const productLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.longDescription,
+    image: product.image?.src ?? absoluteUrl("/images/hero.jpg"),
+    url: absoluteUrl(`/shop/${product.slug}`),
+    brand: { "@type": "Brand", name: site.name },
+    offers: {
+      "@type": "Offer",
+      price: product.price.toFixed(2),
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+      url: absoluteUrl(`/shop/${product.slug}`),
+    },
+  };
+
+  const faqLd = product.faqs.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: product.faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: { "@type": "Answer", text: faq.answer },
+        })),
+      }
+    : null;
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Shop", item: absoluteUrl("/shop") },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: product.name,
+        item: absoluteUrl(`/shop/${product.slug}`),
+      },
+    ],
+  };
+
   return (
     <>
+      <JsonLd data={productLd} />
+      {faqLd && <JsonLd data={faqLd} />}
+      <JsonLd data={breadcrumbLd} />
+
       <div className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto pt-8">
         <nav className="text-xs font-label-caps text-on-surface-variant flex items-center gap-2">
-          <Link href="/shop" className="hover:text-primary">Shop</Link>
+          <Link href="/shop" className="hover:text-primary py-2 inline-block">Shop</Link>
           <span>/</span>
           <span className="text-primary">{product.name}</span>
         </nav>
       </div>
 
-      <Reveal as="section" className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto py-12 grid grid-cols-1 md:grid-cols-2 gap-16">
+      <Reveal as="section" className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto py-12 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
         <div className="relative aspect-square bg-surface-container-low overflow-hidden">
           {product.image ? (
             <Image
               src={product.image.src}
               alt={product.image.alt}
               fill
-              priority
+              preload
               sizes="(min-width: 768px) 50vw, 100vw"
               className="object-cover"
             />
@@ -72,7 +137,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </div>
           )}
           {product.badge && (
-            <span className="absolute top-6 left-6 bg-surface/90 backdrop-blur px-4 py-2 text-[10px] font-label-caps uppercase tracking-widest border border-outline-variant">
+            <span className="absolute top-6 left-6 bg-surface/90 backdrop-blur px-4 py-2 text-xs font-label-caps uppercase tracking-widest border border-outline-variant">
               {product.badge}
             </span>
           )}
@@ -123,7 +188,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
       <Reveal
         as="section"
-        className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto pb-24 grid grid-cols-1 md:grid-cols-2 gap-16"
+        className="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto pb-24 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16"
       >
         <div>
           <h2 className="font-headline-md text-headline-md text-primary mb-6">Nutrition &amp; Facts</h2>
@@ -137,7 +202,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </div>
       </Reveal>
 
-      <RelatedProducts products={related} />
+      {/* Bottom padding on mobile so the fixed sticky CTA never covers the footer. */}
+      <div className="pb-24 md:pb-0">
+        <RelatedProducts products={related} />
+      </div>
 
       <MobileStickyCta product={product} />
     </>

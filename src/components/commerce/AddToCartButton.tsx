@@ -36,7 +36,7 @@ export function AddToCartButton({
         type="button"
         onClick={handleClick}
         aria-label={label}
-        className={clsx("relative text-primary", className)}
+        className={clsx("relative -m-2.5 p-2.5 text-primary", className)}
       >
         <AnimatePresence mode="wait" initial={false}>
           <motion.span

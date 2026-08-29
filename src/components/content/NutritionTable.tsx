@@ -18,8 +18,8 @@ export function NutritionTable({ facts }: NutritionTableProps) {
             key={fact.label}
             className={
               index < facts.length - 1
-                ? "flex justify-between gap-4 px-6 py-3 border-b border-outline-variant/60"
-                : "flex justify-between gap-4 px-6 py-3"
+                ? "flex flex-wrap justify-between gap-4 px-6 py-3 border-b border-outline-variant/60"
+                : "flex flex-wrap justify-between gap-4 px-6 py-3"
             }
           >
             <dt className="text-on-surface-variant text-sm">{fact.label}</dt>

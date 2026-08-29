@@ -7,11 +7,19 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Stagger, StaggerItem } from "@/components/ui/Stagger";
 import { Button } from "@/components/ui/Button";
 import { CertificationBadges } from "@/components/content/CertificationBadges";
+import { pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Our Process",
   description:
     "How Apothecary Wellness sources, tests, and verifies every botanical — from soil to scoop.",
+  alternates: { canonical: "/science" },
+  ...pageOpenGraph({
+    title: "Our Process",
+    description:
+      "How Apothecary Wellness sources, tests, and verifies every botanical — from soil to scoop.",
+    path: "/science",
+  }),
 };
 
 const process = [
@@ -80,13 +88,13 @@ export default function SciencePage() {
       </header>
 
       {/* Process pillars */}
-      <section className="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+      <section className="py-16 md:py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
         <Reveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {process.map((step) => (
               <div
                 key={step.title}
-                className="bg-surface-container-low p-10 border border-outline-variant/10"
+                className="bg-surface-container-low p-6 md:p-10 border border-outline-variant/10"
               >
                 <Icon name={step.icon} className="text-4xl text-primary mb-6" />
                 <h3 className="font-headline-md text-headline-md text-primary mb-4">
@@ -100,7 +108,7 @@ export default function SciencePage() {
       </section>
 
       {/* Ingredient science */}
-      <section className="py-24 bg-surface-container-low">
+      <section className="py-16 md:py-24 bg-surface-container-low">
         <Reveal className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
           <SectionHeading
             title="The Research Behind Each Botanical"
@@ -111,7 +119,7 @@ export default function SciencePage() {
               <Link
                 key={item.title}
                 href={item.href}
-                className="group block bg-surface p-10 border border-outline-variant/10 hover:border-primary transition-colors"
+                className="group block bg-surface p-6 md:p-10 border border-outline-variant/10 hover:border-primary transition-colors"
               >
                 <span className="font-label-caps text-label-caps text-secondary uppercase tracking-widest mb-4 block">
                   {item.label}
@@ -134,7 +142,7 @@ export default function SciencePage() {
       </section>
 
       {/* Certifications */}
-      <section className="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center">
+      <section className="py-16 md:py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center">
         <Reveal>
           <span className="font-label-caps text-label-caps text-on-surface-variant tracking-[0.2em] mb-6 block">
             What Every Batch Carries
@@ -148,14 +156,17 @@ export default function SciencePage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-primary text-surface py-24 text-center">
+      <section className="bg-primary text-surface py-16 md:py-24 text-center">
         <Reveal className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop space-y-8">
           <h2 className="font-headline-lg text-headline-lg max-w-2xl mx-auto">
             See it for yourself, one scoop at a time.
           </h2>
           <div className="flex justify-center">
-            <Button href="/shop" className="!bg-surface !text-primary hover:!bg-secondary-fixed">
-              Shop The Collection
+            <Button
+              href="/shop/beetroot-powder"
+              className="!bg-surface !text-primary hover:!bg-secondary-fixed"
+            >
+              Shop Beetroot Powder
             </Button>
           </div>
         </Reveal>

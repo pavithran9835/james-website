@@ -28,7 +28,7 @@ export function NewsletterForm({
             type="email"
             required
             placeholder="Email Address"
-            className="flex-grow bg-surface border-none focus:ring-1 focus:ring-primary py-4 px-6 font-body-md"
+            className="flex-grow bg-surface border-none focus:ring-1 focus:ring-primary py-4 px-6 text-base font-body-md"
           />
           <button
             type="submit"
@@ -60,9 +60,14 @@ export function NewsletterForm({
           type="email"
           required
           placeholder="Email Address"
-          className="bg-transparent border-none focus:ring-0 text-sm w-full font-body-md placeholder:text-on-surface-variant/50"
+          className="bg-transparent border-none focus:ring-0 text-base w-full font-body-md placeholder:text-on-surface-variant/50"
         />
-        <button type="submit" disabled={pending} aria-label="Subscribe">
+        <button
+          type="submit"
+          disabled={pending}
+          aria-label="Subscribe"
+          className="-my-2.5 -mr-2.5 shrink-0 p-2.5 inline-flex items-center justify-center"
+        >
           <Icon name="arrow_forward" className="text-primary" />
         </button>
       </form>

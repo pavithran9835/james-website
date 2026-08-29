@@ -6,10 +6,13 @@ import { AnimatePresence, motion } from "motion/react";
 import clsx from "clsx";
 import { Icon } from "@/components/ui/Icon";
 import { useSearchModal } from "@/lib/search/SearchModalContext";
+import { useBodyScrollLock } from "@/lib/useBodyScrollLock";
 import { search, type SearchEntry } from "@/lib/data/searchIndex";
 
 export function SearchModal() {
   const { isOpen, generation, close } = useSearchModal();
+
+  useBodyScrollLock(isOpen);
 
   return (
     <AnimatePresence>
@@ -55,7 +58,7 @@ function SearchPanel({ onClose }: { onClose: () => void }) {
   function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === "ArrowDown") {
       event.preventDefault();
-      setActiveIndex((index) => Math.min(index + 1, results.length - 1));
+      setActiveIndex((index) => Math.min(index + 1, Math.max(results.length - 1, 0)));
     } else if (event.key === "ArrowUp") {
       event.preventDefault();
       setActiveIndex((index) => Math.max(index - 1, 0));
@@ -77,7 +80,7 @@ function SearchPanel({ onClose }: { onClose: () => void }) {
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: -16, scale: 0.98 }}
       transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] as const }}
-      className="fixed top-24 left-1/2 -translate-x-1/2 z-[71] w-full max-w-xl px-4"
+      className="fixed top-4 md:top-24 left-1/2 -translate-x-1/2 z-[71] w-full max-w-xl px-4"
       role="dialog"
       aria-label="Search"
     >
@@ -97,7 +100,7 @@ function SearchPanel({ onClose }: { onClose: () => void }) {
           </kbd>
         </div>
 
-        <div className="max-h-96 overflow-y-auto">
+        <div className="max-h-[min(24rem,calc(100dvh-10rem))] overflow-y-auto">
           {query && results.length === 0 && (
             <p className="px-6 py-8 text-center text-on-surface-variant text-sm">
               No results for &ldquo;{query}&rdquo;.

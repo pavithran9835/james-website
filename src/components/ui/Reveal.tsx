@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "motion/react";
+import clsx from "clsx";
 import type { ReactNode } from "react";
+import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 
 interface RevealProps {
   children: ReactNode;
@@ -22,11 +24,18 @@ const tagMap = {
 };
 
 export function Reveal({ children, className, as = "div", delay = 0 }: RevealProps) {
+  const reducedMotion = usePrefersReducedMotion();
+
+  if (reducedMotion) {
+    const Tag = as;
+    return <Tag className={className}>{children}</Tag>;
+  }
+
   const MotionTag = tagMap[as];
 
   return (
     <MotionTag
-      className={className}
+      className={clsx("js-reveal", className)}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}

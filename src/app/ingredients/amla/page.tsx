@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Metadata } from "next";
 import { Icon } from "@/components/ui/Icon";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -9,11 +10,19 @@ import { CountUp } from "@/components/ui/CountUp";
 import { ParallaxLayer } from "@/components/ui/ParallaxLayer";
 import { StatRow } from "@/components/content/StatRow";
 import { products } from "@/lib/data/products";
+import { pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Amla Detox Guide",
   description:
     "Discover the molecular precision of Amla. A clinical powerhouse of restorative nutrients designed to purify the system through science-backed botanical wisdom.",
+  alternates: { canonical: "/ingredients/amla" },
+  ...pageOpenGraph({
+    title: "Amla Detox Guide",
+    description:
+      "Discover the molecular precision of Amla. A clinical powerhouse of restorative nutrients designed to purify the system through science-backed botanical wisdom.",
+    path: "/ingredients/amla", image: "/images/amla.jpg",
+  }),
 };
 
 const highlights = [
@@ -22,21 +31,21 @@ const highlights = [
     title: "Antioxidant Powerhouse",
     description:
       "Rich in polyphenols and tannins, Amla scavenges free radicals with clinical efficiency, protecting cellular integrity from oxidative stress.",
-    link: "Molecular Detail",
+    label: "Molecular Detail",
   },
   {
     icon: "health_metrics",
     title: "Immune Support",
     description:
       "Reinforces the body's natural defenses through high bio-availability, modulating immune response for sustained seasonal resilience.",
-    link: "Bio-Markers",
+    label: "Bio-Markers",
   },
   {
     icon: "eco",
     title: "Digestion & Purity",
     description:
       "Optimizes the gastrointestinal environment, facilitating efficient nutrient absorption and systemic waste elimination for a total detox.",
-    link: "Metabolic Flux",
+    label: "Metabolic Flux",
   },
 ];
 
@@ -83,7 +92,7 @@ export default function AmlaPage() {
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuAntbZ2hxaXbUBwzQqXPME1C2e3cF_S5qh9dxlusMWtr71LttlXxToEyHBWS2MMXgJmeEDid8Nz2NYDMmFpEPsPmNcKUugkB4ykMwb7mj01GGcA-hcnrxtgZr65ILwgesGgb_6oGPjdsO2f2AFdZCwA2X2Sm-64fX5BM11qwQ7Wozs8iHLjOdq0daRZ7EZBnlVN2LR3pZauTYCCWFkO-aRrQie7oX4PBFIQi9uw0AWf3ZY6rVY6Fdi8wg"
                   alt="A professional studio photograph of fresh green Amla berries arranged on a minimalist clay plate. The lighting is soft and diffused, creating a high-end apothecary aesthetic with natural shadows."
                   fill
-                  priority
+                  preload
                   sizes="(min-width: 768px) 40vw, 100vw"
                   className="object-cover"
                 />
@@ -110,7 +119,7 @@ export default function AmlaPage() {
             {highlights.map((item) => (
               <div
                 key={item.title}
-                className="group bg-surface p-10 border-b border-tertiary-fixed-dim hover:-translate-y-1 transition-transform duration-500"
+                className="group bg-surface p-6 md:p-10 border-b border-tertiary-fixed-dim hover:-translate-y-1 transition-transform duration-500"
               >
                 <Icon name={item.icon} className="text-primary text-4xl mb-8" />
                 <h3 className="font-headline-md text-headline-md text-primary mb-4">
@@ -119,10 +128,9 @@ export default function AmlaPage() {
                 <p className="text-on-surface-variant leading-relaxed mb-6">
                   {item.description}
                 </p>
-                <div className="flex items-center gap-2 text-on-tertiary-container group-hover:gap-4 transition-all">
-                  <span className="font-label-caps text-label-caps">{item.link}</span>
-                  <Icon name="arrow_forward" className="text-sm" />
-                </div>
+                <span className="font-label-caps text-label-caps text-on-tertiary-container">
+                  {item.label}
+                </span>
               </div>
             ))}
           </div>
@@ -130,7 +138,7 @@ export default function AmlaPage() {
       </section>
 
       {/* Vitamin C concentration */}
-      <section className="py-32 relative overflow-hidden">
+      <section className="py-16 md:py-32 relative overflow-hidden">
         <Reveal
           as="section"
           className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-20 items-center"
@@ -154,15 +162,15 @@ export default function AmlaPage() {
             </h2>
             <p className="font-body-lg text-body-lg text-on-surface-variant mb-10 leading-relaxed">
               Unlike synthetic alternatives, the Vitamin C in Amla is
-              stabilized by tannins, ensuring it survives digestion for
-              maximum efficacy. A single ounce contains up to 20x more
-              Vitamin C than common citrus.
+              stabilized by tannins, helping it survive digestion intact.
+              Gram for gram, amla is among the most vitamin C-dense fruits
+              known — far ahead of common citrus.
             </p>
             <div className="space-y-8">
               <StatRow
-                figure={<CountUp value={20} suffix="x" />}
-                title="Superior Density"
-                description="Higher concentration per gram than nearly any other botanical source."
+                figure={<CountUp value={45} suffix="%" />}
+                title="Daily Value Per Serving"
+                description="A single 2g half-teaspoon delivers 45% of your daily vitamin C, from whole fruit."
               />
               <StatRow
                 figure={<Icon name="verified" className="text-4xl" />}
@@ -178,8 +186,8 @@ export default function AmlaPage() {
       <section className="pb-32 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
         <Reveal as="section" className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
           {ctaProducts.map((product) => (
-            <div key={product.id} className="group cursor-pointer">
-              <div className="relative overflow-hidden h-96 mb-6">
+            <Link key={product.id} href={`/shop/${product.slug}`} className="group block">
+              <div className="relative overflow-hidden aspect-[4/3] mb-6">
                 {product.image && (
                   <Image
                     src={product.image.src}
@@ -191,7 +199,7 @@ export default function AmlaPage() {
                 )}
                 {product.badge && (
                   <div className="absolute bottom-6 left-6">
-                    <span className="bg-surface px-4 py-2 font-label-caps text-[10px] tracking-widest text-primary border border-tertiary-fixed-dim">
+                    <span className="bg-surface px-4 py-2 font-label-caps text-xs tracking-widest text-primary border border-tertiary-fixed-dim">
                       {product.badge}
                     </span>
                   </div>
@@ -204,7 +212,7 @@ export default function AmlaPage() {
               <div className="text-on-tertiary-container font-label-caps text-label-caps border-b border-transparent group-hover:border-on-tertiary-container w-fit pb-1 transition-all">
                 Shop {product.name.split(" ")[0]} ${product.price}
               </div>
-            </div>
+            </Link>
           ))}
         </Reveal>
       </section>

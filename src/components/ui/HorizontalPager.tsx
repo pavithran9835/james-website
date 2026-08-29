@@ -25,11 +25,14 @@ export function HorizontalPager({ items, className }: HorizontalPagerProps) {
 
   function goTo(index: number) {
     const clamped = Math.max(0, Math.min(items.length - 1, index));
-    itemRefs.current[clamped]?.scrollIntoView({
-      behavior: "smooth",
-      inline: "center",
-      block: "nearest",
-    });
+    const container = scrollRef.current;
+    const target = itemRefs.current[clamped];
+    if (container && target) {
+      container.scrollTo({
+        left: target.offsetLeft - (container.clientWidth - target.offsetWidth) / 2,
+        behavior: "smooth",
+      });
+    }
     setActiveIndex(clamped);
   }
 
@@ -56,7 +59,7 @@ export function HorizontalPager({ items, className }: HorizontalPagerProps) {
         <div
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-2 [&::-webkit-scrollbar]:hidden [scrollbar-width:none]"
+          className="flex gap-6 overflow-x-auto overscroll-x-contain snap-x snap-mandatory scroll-smooth pb-2 [&::-webkit-scrollbar]:hidden [scrollbar-width:none]"
         >
           {items.map((item, index) => {
             const content = (
@@ -107,18 +110,22 @@ export function HorizontalPager({ items, className }: HorizontalPagerProps) {
         </button>
       </div>
 
-      <div className="flex justify-center gap-2 mt-8">
+      <div className="flex justify-center mt-8">
         {items.map((item, index) => (
           <button
             key={item.caption}
             type="button"
             aria-label={`Go to slide ${index + 1}`}
             onClick={() => goTo(index)}
-            className={clsx(
-              "h-2 rounded-full transition-all duration-300",
-              index === activeIndex ? "w-8 bg-primary" : "w-2 bg-outline-variant",
-            )}
-          />
+            className="flex h-11 min-w-[44px] items-center justify-center"
+          >
+            <span
+              className={clsx(
+                "h-2 rounded-full transition-all duration-300",
+                index === activeIndex ? "w-8 bg-primary" : "w-2 bg-outline-variant",
+              )}
+            />
+          </button>
         ))}
       </div>
     </div>

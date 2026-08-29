@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Metadata } from "next";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
@@ -8,23 +9,31 @@ import { CountUp } from "@/components/ui/CountUp";
 import { ParallaxLayer } from "@/components/ui/ParallaxLayer";
 import { Quote } from "@/components/content/Quote";
 import { NewsletterForm } from "@/components/commerce/NewsletterForm";
+import { pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Moringa Guide",
   description:
     "Moringa Oleifera, often called the \"Miracle Tree,\" offers a comprehensive profile of essential nutrients to revitalize your cellular health.",
+  alternates: { canonical: "/ingredients/moringa" },
+  ...pageOpenGraph({
+    title: "Moringa Guide",
+    description:
+      "Moringa Oleifera, often called the \"Miracle Tree,\" offers a comprehensive profile of essential nutrients to revitalize your cellular health.",
+    path: "/ingredients/moringa", image: "/images/moringa.jpg",
+  }),
 };
 
 const vitamins = [
   {
     letter: "A",
     label: "Vitamin A (Beta-Carotene)",
-    description: "4x more than carrots. Crucial for immune function and vision health.",
+    description: "Gram for gram, dried moringa leaf is unusually dense in beta-carotene — crucial for immune function and vision health.",
   },
   {
     letter: "C",
     label: "Vitamin C (Ascorbic Acid)",
-    description: "7x more than oranges. Enhances collagen production and cellular repair.",
+    description: "A naturally rich whole-food source of vitamin C, which supports collagen production and cellular repair.",
   },
   {
     letter: "E",
@@ -37,13 +46,13 @@ export default function MoringaPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-surface-container-low">
+      <section className="relative min-h-[75svh] flex items-center overflow-hidden bg-surface-container-low">
         <div className="relative w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-16 items-center py-16">
           <Stagger className="space-y-8">
             <StaggerItem className="inline-flex items-center gap-2 px-3 py-1 border border-tertiary-fixed-dim rounded-full">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               <span className="font-label-caps text-label-caps text-primary">
-                Scientifically Validated Superfood
+                Whole-Leaf Superfood
               </span>
             </StaggerItem>
             <StaggerItem>
@@ -62,8 +71,8 @@ export default function MoringaPage() {
               <Button href="#bioactivity" className="tracking-widest">
                 Explore Moringa
               </Button>
-              <Button href="/shop" variant="secondary" className="tracking-widest">
-                View Lab Tests
+              <Button href="/science" variant="secondary" className="tracking-widest">
+                Our Testing Process
               </Button>
             </StaggerItem>
           </Stagger>
@@ -75,7 +84,7 @@ export default function MoringaPage() {
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCfOomOrSC58vrx8WxcTo7ybps6-4IEhLu3OOQSQVvJyFL4fbc6gubr6gGy-nPpTY7Ilo6mC2awViG4Yy4WUaZ4WUtTbxr8CzItJ4px6Il5Rc5DC3LPXvK5ymQXqQ6PdCDcPkn4oEWDzt7-wcBXwU7t3VoJwgH16L5zIxAgjvsPR4vsn-2Kbi7MtWCC2M2pthSudxYxCH109VinODn0YEZjpAB5O_uXjdebrvRgHiuwJAu4Isl4WOnFQ"
                   alt="A high-end, editorial-style product photograph of fresh, vibrant green Moringa leaves resting on a minimalist ceramic plate."
                   fill
-                  priority
+                  preload
                   sizes="(min-width: 768px) 50vw, 100vw"
                   className="object-cover"
                 />
@@ -97,26 +106,29 @@ export default function MoringaPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter h-auto md:h-[600px]">
-            <div className="group bg-surface-container p-12 flex flex-col justify-between border-[0.5px] border-outline-variant hover:border-primary transition-colors">
+            <div className="group bg-surface-container p-6 md:p-12 flex flex-col justify-between border-[0.5px] border-outline-variant hover:border-primary transition-colors">
               <div>
                 <Icon name="eco" className="text-4xl text-primary mb-6" />
                 <h3 className="font-headline-md text-headline-md text-primary mb-4">
-                  Anti-Inflammatory
+                  Antioxidant Balance
                 </h3>
                 <p className="text-on-surface-variant">
-                  High concentrations of isothiocyanates and quercetin help
-                  soothe systemic inflammation at the molecular level.
+                  Naturally occurring isothiocyanates and quercetin help the
+                  body manage everyday oxidative stress.
                 </p>
               </div>
               <div className="pt-8 border-t border-outline-variant">
-                <span className="font-label-caps text-label-caps text-primary group-hover:ml-2 transition-all">
-                  RESEARCH STUDY →
-                </span>
+                <Link
+                  href="/science"
+                  className="font-label-caps text-label-caps text-primary group-hover:ml-2 transition-all"
+                >
+                  OUR TESTING PROCESS →
+                </Link>
               </div>
             </div>
 
             <div className="grid grid-rows-2 gap-gutter">
-              <div className="bg-primary p-12 text-surface flex flex-col justify-center">
+              <div className="bg-primary p-6 md:p-12 text-surface flex flex-col justify-center">
                 <h3 className="font-headline-md text-headline-md mb-2">Skin Vitality</h3>
                 <p className="opacity-80">
                   Antioxidant-rich profile protects skin cells from oxidative
@@ -131,7 +143,7 @@ export default function MoringaPage() {
                   sizes="33vw"
                   className="object-cover grayscale-[20%] group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-primary/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute inset-0 bg-primary/20 flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
                   <span className="text-surface font-label-caps text-label-caps tracking-[0.2em] bg-primary/40 backdrop-blur-md px-6 py-2">
                     PURITY FIRST
                   </span>
@@ -139,7 +151,7 @@ export default function MoringaPage() {
               </div>
             </div>
 
-            <div className="bg-surface-container-high p-12 flex flex-col justify-end relative overflow-hidden">
+            <div className="bg-surface-container-high p-6 md:p-12 flex flex-col justify-end relative overflow-hidden">
               <Icon name="bolt" className="!text-[120px] text-primary absolute top-0 right-0 p-8 opacity-20" />
               <div className="relative z-10">
                 <h3 className="font-headline-md text-headline-md text-primary mb-4">
@@ -156,18 +168,18 @@ export default function MoringaPage() {
       </section>
 
       {/* Vitamin profile */}
-      <section className="py-32 bg-primary-container text-surface">
+      <section className="py-16 md:py-32 bg-primary-container text-surface overflow-hidden">
         <Reveal
           as="section"
           className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-20 items-center"
         >
           <div className="relative">
-            <div className="aspect-square rounded-full border border-surface/20 absolute -inset-8 animate-[spin_20s_linear_infinite]" />
-            <div className="relative z-10 bg-surface/5 backdrop-blur-sm p-12 rounded-full aspect-square flex items-center justify-center">
+            <div className="aspect-square rounded-full border border-surface/20 absolute -inset-4 md:-inset-8 animate-[spin_20s_linear_infinite]" />
+            <div className="relative z-10 bg-surface/5 backdrop-blur-sm p-6 md:p-12 rounded-full aspect-square flex items-center justify-center">
               <div className="text-center">
-                <CountUp value={92} className="text-display-lg font-display-lg block mb-2" />
+                <CountUp value={22} suffix="%" className="text-display-lg font-display-lg block mb-2" />
                 <span className="font-label-caps text-label-caps tracking-[0.3em]">
-                  NUTRIENTS
+                  DV VITAMIN A PER SCOOP
                 </span>
               </div>
             </div>
@@ -206,8 +218,8 @@ export default function MoringaPage() {
           </div>
           <Quote
             quote="Moringa isn't just a supplement; it's a recalibration of the body's natural baseline. We source only the 'Miracle Leaf' from high-altitude volcanic soil to ensure maximum mineral density."
-            author="Dr. Elara Vance"
-            role="Chief of Botanical Research"
+            author="The Apothecary Wellness Standard"
+            role=""
           />
         </Reveal>
       </section>
@@ -241,8 +253,7 @@ export default function MoringaPage() {
         <Reveal className="max-w-2xl mx-auto space-y-8">
           <h3 className="font-headline-md text-headline-md text-primary">Begin Your Ritual</h3>
           <p className="text-on-surface-variant">
-            Join 50,000+ others receiving our weekly science-backed wellness
-            insights and botanical discoveries.
+            Join our mailing list for weekly science-backed wellness insights.
           </p>
           <NewsletterForm variant="boxed" />
         </Reveal>

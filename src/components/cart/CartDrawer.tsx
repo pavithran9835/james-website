@@ -5,10 +5,13 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { Icon } from "@/components/ui/Icon";
 import { useCart } from "@/lib/cart/CartContext";
+import { useBodyScrollLock } from "@/lib/useBodyScrollLock";
 import { products } from "@/lib/data/products";
 
 export function CartDrawer() {
   const { lines, isOpen, closeCart, removeItem, setQuantity, subtotal } = useCart();
+
+  useBodyScrollLock(isOpen);
 
   const items = lines
     .map((line) => ({
@@ -35,13 +38,18 @@ export function CartDrawer() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", stiffness: 320, damping: 32 }}
-            className="fixed top-0 right-0 z-[61] h-full w-full max-w-md bg-surface shadow-2xl flex flex-col"
+            className="fixed top-0 right-0 z-[61] h-dvh w-full max-w-md bg-surface shadow-2xl flex flex-col"
             role="dialog"
             aria-label="Shopping cart"
           >
             <div className="flex items-center justify-between px-8 py-6 border-b border-outline-variant">
               <h2 className="font-headline-md text-headline-md text-primary">Your Cart</h2>
-              <button type="button" onClick={closeCart} aria-label="Close cart" className="text-primary">
+              <button
+                type="button"
+                onClick={closeCart}
+                aria-label="Close cart"
+                className="w-11 h-11 -m-2.5 flex items-center justify-center text-primary"
+              >
                 <Icon name="close" />
               </button>
             </div>
@@ -79,7 +87,7 @@ export function CartDrawer() {
                         type="button"
                         onClick={() => removeItem(line.productId)}
                         aria-label={`Remove ${product!.name}`}
-                        className="text-on-surface-variant hover:text-error hover:bg-surface-container-low rounded-full p-1 transition-colors active:scale-90"
+                        className="w-11 h-11 -m-2.5 flex items-center justify-center text-on-surface-variant hover:text-error hover:bg-surface-container-low rounded-full transition-colors active:scale-90"
                       >
                         <Icon name="close" className="text-base" />
                       </button>
@@ -91,7 +99,7 @@ export function CartDrawer() {
                       <button
                         type="button"
                         onClick={() => setQuantity(line.productId, line.quantity - 1)}
-                        className="w-8 h-8 flex items-center justify-center text-primary hover:bg-surface-container-low transition-colors active:scale-90"
+                        className="w-11 h-11 flex items-center justify-center text-primary hover:bg-surface-container-low transition-colors active:scale-90"
                         aria-label="Decrease quantity"
                       >
                         −
@@ -100,7 +108,7 @@ export function CartDrawer() {
                       <button
                         type="button"
                         onClick={() => setQuantity(line.productId, line.quantity + 1)}
-                        className="w-8 h-8 flex items-center justify-center text-primary hover:bg-surface-container-low transition-colors active:scale-90"
+                        className="w-11 h-11 flex items-center justify-center text-primary hover:bg-surface-container-low transition-colors active:scale-90"
                         aria-label="Increase quantity"
                       >
                         +
@@ -112,7 +120,7 @@ export function CartDrawer() {
             </div>
 
             {items.length > 0 && (
-              <div className="px-8 py-6 border-t border-outline-variant space-y-4">
+              <div className="px-8 pt-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] border-t border-outline-variant space-y-4">
                 <div className="flex justify-between font-body-lg">
                   <span className="text-on-surface-variant">Subtotal</span>
                   <span className="font-bold text-primary">${subtotal.toFixed(2)}</span>

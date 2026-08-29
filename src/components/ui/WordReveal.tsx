@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 
 interface WordRevealProps {
   text: string;
@@ -19,7 +20,12 @@ const wordVariants = {
 };
 
 export function WordReveal({ text, className, delay = 0, as: Tag = "h2" }: WordRevealProps) {
+  const reducedMotion = usePrefersReducedMotion();
   const words = text.split(" ");
+
+  if (reducedMotion) {
+    return <Tag className={className}>{text}</Tag>;
+  }
 
   return (
     <Tag className={className}>
@@ -37,7 +43,10 @@ export function WordReveal({ text, className, delay = 0, as: Tag = "h2" }: WordR
             key={i}
             className="inline-block overflow-hidden pb-[0.12em] -mb-[0.12em] align-bottom"
           >
-            <motion.span className="inline-block will-change-transform" variants={wordVariants}>
+            <motion.span
+              className="js-reveal inline-block will-change-transform"
+              variants={wordVariants}
+            >
               {word}
             </motion.span>
             {i < words.length - 1 && <span>&nbsp;</span>}

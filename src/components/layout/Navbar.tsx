@@ -36,7 +36,7 @@ export function Navbar() {
       <div className="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-20 max-w-container-max mx-auto">
         <Link
           href="/"
-          className="text-headline-md font-headline-md font-bold tracking-tight text-primary"
+          className="text-xl md:text-headline-md font-headline-md font-bold tracking-tight text-primary"
         >
           {site.name}
         </Link>
@@ -67,14 +67,14 @@ export function Navbar() {
             aria-label="Search (⌘K)"
             title="Search (⌘K)"
             onClick={openSearch}
-            className="text-primary hover:opacity-70 transition-opacity"
+            className="inline-flex items-center justify-center p-2.5 -m-2.5 text-primary hover:opacity-70 transition-opacity"
           >
             <Icon name="search" />
           </button>
           <CartButton />
           <button
             type="button"
-            className="md:hidden text-primary"
+            className="md:hidden inline-flex items-center justify-center p-2.5 -m-2.5 text-primary"
             aria-label="Toggle menu"
             onClick={() => setMenuOpen((open) => !open)}
           >
@@ -92,14 +92,14 @@ export function Navbar() {
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] as const }}
             className="md:hidden overflow-hidden bg-surface border-t border-outline-variant/30"
           >
-            <div className="px-margin-mobile py-6 flex flex-col gap-6">
+            <div className="px-margin-mobile py-3 flex flex-col">
               {navLinks.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
                   className={clsx(
-                    "font-label-caps text-label-caps uppercase tracking-widest",
+                    "block py-3 font-label-caps text-label-caps uppercase tracking-widest",
                     pathname === link.href ? "text-primary" : "text-on-surface-variant",
                   )}
                 >

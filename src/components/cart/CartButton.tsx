@@ -11,7 +11,7 @@ export function CartButton() {
     <button
       type="button"
       onClick={openCart}
-      className="relative flex items-center gap-2 group"
+      className="relative flex items-center justify-center gap-2 p-2.5 -m-2.5 group"
       aria-label="Open cart"
     >
       <Icon name="shopping_bag" className="text-primary group-hover:scale-110 transition-transform" />
@@ -26,7 +26,7 @@ export function CartButton() {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.4, opacity: 0 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            className="absolute -top-2 -right-3 min-w-[18px] h-[18px] px-1 rounded-full bg-secondary text-surface text-[10px] font-bold flex items-center justify-center"
+            className="absolute top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 rounded-full bg-secondary text-surface text-[10px] font-bold flex items-center justify-center"
           >
             {itemCount}
           </motion.span>
