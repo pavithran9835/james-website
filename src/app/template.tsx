@@ -1,19 +1,10 @@
-"use client";
-
-import { motion } from "motion/react";
 import type { ReactNode } from "react";
 
+// Pure-CSS page-enter transition (see .page-enter in globals.css).
+// A template re-mounts on every navigation, so the animation replays per
+// route change — same effect as the old motion.div version, but content
+// paints at first render instead of waiting for JS hydration (this was
+// the single biggest mobile LCP cost on slow connections).
 export default function Template({ children }: { children: ReactNode }) {
-  return (
-    <motion.div
-      // js-reveal: the noscript CSS in layout.tsx un-hides this wrapper,
-      // otherwise the entire page is invisible when JS never runs.
-      className="js-reveal"
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] as const }}
-    >
-      {children}
-    </motion.div>
-  );
+  return <div className="page-enter">{children}</div>;
 }
