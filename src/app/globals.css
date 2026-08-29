@@ -36,6 +36,18 @@
   }
 }
 
+/* Self-hosted Material Symbols subset (28 icons used by this site).
+   Regenerate public/fonts/material-symbols-subset.woff2 from
+   fonts.googleapis.com/css2?family=Material+Symbols+Outlined:...&icon_names=<sorted,names>
+   whenever a NEW icon is added, or it will render as raw ligature text. */
+@font-face {
+  font-family: "Material Symbols Outlined";
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: block;
+  src: url("/fonts/material-symbols-subset.woff2") format("woff2");
+}
+
 .material-symbols-outlined {
   font-family: "Material Symbols Outlined";
   font-weight: normal;

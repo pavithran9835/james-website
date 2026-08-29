@@ -68,17 +68,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`scroll-smooth ${montserrat.variable} ${playfairDisplay.variable}`}
     >
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* next/font/google doesn't carry Material Symbols Outlined; `display=block`
-            avoids a flash of the raw icon-name text before the glyphs load.
-            icon_names subsets the font to only the glyphs this site uses
-            (8KB vs 3.8MB full font) — when adding a NEW icon, append its name
-            here in alphabetical order or it will render as raw text. */}
-        {/* eslint-disable-next-line @next/next/google-font-display, @next/next/no-page-custom-font */}
+        {/* Material Symbols is self-hosted as a 40KB variable-font subset —
+            see the @font-face in globals.css. No Google Fonts requests at
+            runtime (next/font already self-hosts the text fonts too). */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0..200&icon_names=add_circle,arrow_forward,auto_awesome,biotech,bolt,check,check_circle,chevron_left,chevron_right,close,eco,exercise,expand_more,favorite,groups,health_metrics,help,mail,menu,package_2,potted_plant,schedule,science,search,shield_with_heart,shopping_bag,spa,verified&display=block"
-          rel="stylesheet"
+          rel="preload"
+          href="/fonts/material-symbols-subset.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
         />
         {/* Reveal animations serialize a hidden initial state (opacity/transform)
             into the SSR HTML. Without JS nothing would ever become visible, so
