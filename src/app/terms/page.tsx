@@ -3,11 +3,11 @@ import { site, pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: `The terms governing your use of the ${site.name} website.`,
+  description: `The terms governing your use of the ${site.name} website — ordering, product information, pricing, intellectual property, and liability.`,
   alternates: { canonical: "/terms" },
   ...pageOpenGraph({
     title: "Terms of Service",
-    description: `The terms governing your use of the ${site.name} website.`,
+    description: `The terms governing your use of the ${site.name} website — ordering, product information, pricing, intellectual property, and liability.`,
     path: "/terms",
   }),
 };

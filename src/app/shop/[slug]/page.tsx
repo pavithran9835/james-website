@@ -28,13 +28,29 @@ export async function generateMetadata({
   const title = `${product.name} — ${product.benefitLabel}`;
   const ogImage = product.image?.src ?? site.ogImage;
 
+  // The short card blurb alone is too thin for a meta description (~155
+  // chars shows in results); extend it with the highlight that repeats the
+  // blurb least, plus the jar size.
+  const blurbWords = new Set(
+    product.description.toLowerCase().match(/[a-z]{5,}/g) ?? [],
+  );
+  const highlight = [...product.highlights].sort(
+    (a, b) =>
+      (a.toLowerCase().match(/[a-z]{5,}/g) ?? []).filter((w) => blurbWords.has(w)).length -
+      (b.toLowerCase().match(/[a-z]{5,}/g) ?? []).filter((w) => blurbWords.has(w)).length,
+  )[0];
+  let description = `${product.description} ${highlight}.`;
+  if (description.length + product.size.length + 2 <= 160) {
+    description += ` ${product.size}.`;
+  }
+
   return {
     title,
-    description: product.description,
+    description,
     alternates: { canonical: `/shop/${slug}` },
     openGraph: {
       title,
-      description: product.description,
+      description,
       url: `/shop/${slug}`,
       type: "website",
       siteName: site.name,
@@ -43,7 +59,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title,
-      description: product.description,
+      description,
       images: [ogImage],
     },
   };
