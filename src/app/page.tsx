@@ -12,7 +12,7 @@ import { MagneticButton } from "@/components/ui/MagneticButton";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { ImageReveal } from "@/components/ui/ImageReveal";
 import { Marquee } from "@/components/ui/Marquee";
-import { VideoSequence } from "@/components/ui/VideoSequence";
+import { DesktopHeroVideo } from "@/components/ui/DesktopHeroVideo";
 import { HorizontalPager } from "@/components/ui/HorizontalPager";
 import { NewsletterForm } from "@/components/commerce/NewsletterForm";
 import { AddToCartButton } from "@/components/commerce/AddToCartButton";
@@ -112,7 +112,17 @@ export default function HomePage() {
       {/* Hero */}
       <header className="relative min-h-[100svh] flex items-center overflow-hidden -mt-20 pt-20">
         <ParallaxLayer className="absolute inset-0 z-0">
-          <VideoSequence
+          {/* Static image is the SSR hero (fast mobile LCP); the video
+              layers over it on desktop only, after hydration. */}
+          <Image
+            src="/images/beetroot.jpg"
+            alt=""
+            fill
+            preload
+            sizes="100vw"
+            className="object-cover opacity-90"
+          />
+          <DesktopHeroVideo
             sources={["/video/beetroot-explode.mp4"]}
             posters={["/images/beetroot.jpg"]}
             className="absolute inset-0"

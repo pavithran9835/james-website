@@ -68,6 +68,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`scroll-smooth ${montserrat.variable} ${playfairDisplay.variable}`}
     >
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* next/font/google doesn't carry Material Symbols Outlined; `display=block`
             avoids a flash of the raw icon-name text before the glyphs load. */}
         {/* eslint-disable-next-line @next/next/google-font-display, @next/next/no-page-custom-font */}

@@ -41,9 +41,9 @@ export function Footer() {
             ))}
           </div>
           <div className="space-y-2 pt-2">
-            <h4 className="font-label-caps text-label-caps text-primary uppercase font-bold tracking-widest">
+            <h3 className="font-label-caps text-label-caps text-primary uppercase font-bold tracking-widest">
               Journal
-            </h4>
+            </h3>
             <p className="text-on-surface-variant font-body-md text-sm">
               Join our mailing list for research updates and new releases.
             </p>
@@ -53,9 +53,9 @@ export function Footer() {
 
         {columns.map((column) => (
           <div key={column.title} className="space-y-4">
-            <h4 className="font-label-caps text-label-caps text-primary uppercase font-bold tracking-widest">
+            <h3 className="font-label-caps text-label-caps text-primary uppercase font-bold tracking-widest">
               {column.title}
-            </h4>
+            </h3>
             <ul className="space-y-1">
               {column.links.map((link) => (
                 <li key={link.label}>
@@ -73,7 +73,7 @@ export function Footer() {
       </div>
 
       <div className="max-w-container-max mx-auto pt-16 mt-16 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-6">
-        <p className="font-body-md text-on-surface-variant text-xs opacity-70">
+        <p className="font-body-md text-on-surface-variant text-xs">
           © {new Date().getFullYear()} {site.name}. {site.tagline}.
         </p>
         <div className="flex gap-8">
