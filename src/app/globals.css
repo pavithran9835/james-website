@@ -106,17 +106,17 @@
 
 /* Page-enter transition applied by src/app/template.tsx on every navigation.
    CSS-only so server-rendered content paints immediately (no hydration gate). */
+/* Transform-only (no opacity) so the browser can paint the LCP element at
+   full visibility on the first frame — an opacity fade here delays LCP. */
 @keyframes page-rise {
   from {
-    opacity: 0;
     transform: translateY(16px);
   }
   to {
-    opacity: 1;
     transform: none;
   }
 }
 
 .page-enter {
-  animation: page-rise 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: page-rise 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
 }

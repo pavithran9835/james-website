@@ -117,6 +117,7 @@ export default function HomePage() {
             alt=""
             fill
             preload
+            fetchPriority="high"
             sizes="100vw"
             className="object-cover opacity-90"
           />
