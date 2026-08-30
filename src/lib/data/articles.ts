@@ -5,7 +5,7 @@ import type { Article } from "@/types/article";
 export const articles: Article[] = [
   {
     slug: "beetroot-powder-benefits",
-    metaTitle: "Beetroot Powder Benefits: What the Science Says",
+    metaTitle: "Beetroot Powder Benefits, Explained",
     metaDescription: "Learn what beetroot powder does: how dietary nitrate supports circulation and endurance, plus betalains, folate, and how to choose a quality powder.",
     title: "Beetroot Powder Benefits: What the Science Actually Says",
     excerpt: "A calm, evidence-grounded look at what beetroot powder actually does — from the nitrate-to-nitric-oxide pathway to endurance, antioxidant support, and how to choose a quality powder.",
@@ -113,7 +113,7 @@ export const articles: Article[] = [
   },
   {
     slug: "how-to-use-beetroot-powder",
-    metaTitle: "How to Use Beetroot Powder: Dosage, Timing & Recipes",
+    metaTitle: "How to Use Beetroot Powder",
     metaDescription: "Learn how to use beetroot powder: the right daily dose, when to take it before training, what it mixes well with, and six simple ways to take it daily.",
     title: "How to Use Beetroot Powder: Dosage, Timing, and Simple Recipes",
     excerpt: "A practical guide to using beetroot powder well: the 5-gram daily dose, the 30-to-60-minute pre-workout window, six reliable ways to take it, and the mistakes worth avoiding.",
@@ -217,7 +217,7 @@ export const articles: Article[] = [
   },
   {
     slug: "beetroot-powder-vs-beetroot-juice",
-    metaTitle: "Beetroot Powder vs Beetroot Juice: Which Is Better?",
+    metaTitle: "Beetroot Powder vs. Beetroot Juice",
     metaDescription: "Beetroot powder vs beetroot juice: compare nitrates, sugar, shelf life, cost, and convenience to find the format that fits your daily routine.",
     title: "Beetroot Powder vs. Beetroot Juice: Which Should You Choose?",
     excerpt: "Beetroot powder and beetroot juice deliver the same dietary nitrate in very different packages. We compare how each is made, their sugar and nitrate content, cost per serving, and everyday practicality.",

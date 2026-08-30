@@ -6,12 +6,12 @@ import { articles } from "@/lib/data/articles";
 import { pageOpenGraph } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "Learn: Beetroot Powder Guides & Superfood Science",
+  title: "Beetroot Guides & Superfood Science",
   description:
     "Practical, science-grounded guides to beetroot powder and our other botanicals — benefits, dosage, timing, and honest comparisons from Apothecary Wellness.",
   alternates: { canonical: "/learn" },
   ...pageOpenGraph({
-    title: "Learn: Beetroot Powder Guides & Superfood Science",
+    title: "Beetroot Guides & Superfood Science",
     description:
       "Practical, science-grounded guides to beetroot powder and our other botanicals — benefits, dosage, timing, and honest comparisons from Apothecary Wellness.",
     path: "/learn",

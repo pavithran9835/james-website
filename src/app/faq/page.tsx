@@ -7,12 +7,12 @@ import { site, pageOpenGraph } from "@/lib/seo";
 import { products } from "@/lib/data/products";
 
 export const metadata: Metadata = {
-  title: "FAQ: Beetroot Powder, Orders & Quality",
+  title: "FAQ: Beetroot Powder & Orders",
   description:
     "Answers to common questions about Apothecary Wellness beetroot powder and botanicals — usage, daily dosing, quality testing, shipping, and wholesale.",
   alternates: { canonical: "/faq" },
   ...pageOpenGraph({
-    title: "FAQ: Beetroot Powder, Orders & Quality",
+    title: "FAQ: Beetroot Powder & Orders",
     description:
       "Answers to common questions about Apothecary Wellness beetroot powder and botanicals — usage, daily dosing, quality testing, shipping, and wholesale.",
     path: "/faq",
