@@ -11,7 +11,7 @@ import { NutritionTable } from "@/components/content/NutritionTable";
 import { FaqAccordion } from "@/components/content/FaqAccordion";
 import { CertificationBadges } from "@/components/content/CertificationBadges";
 import { JsonLd } from "@/lib/jsonld";
-import { site, absoluteUrl } from "@/lib/seo";
+import { site, absoluteUrl, socialDescription } from "@/lib/seo";
 import { products } from "@/lib/data/products";
 
 export function generateStaticParams() {
@@ -50,7 +50,7 @@ export async function generateMetadata({
     alternates: { canonical: `/shop/${slug}` },
     openGraph: {
       title,
-      description,
+      description: socialDescription(description),
       url: `/shop/${slug}`,
       type: "website",
       siteName: site.name,
@@ -59,7 +59,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title,
-      description,
+      description: socialDescription(description),
       images: [ogImage],
     },
   };

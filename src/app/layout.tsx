@@ -8,7 +8,7 @@ import { SearchModalProvider } from "@/lib/search/SearchModalContext";
 import { SearchModal } from "@/components/search/SearchModal";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { JsonLd } from "@/lib/jsonld";
-import { site, absoluteUrl } from "@/lib/seo";
+import { site, absoluteUrl, socialDescription } from "@/lib/seo";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -23,13 +23,13 @@ export const metadata: Metadata = {
     siteName: site.name,
     url: "/",
     title: `${site.name} | Organic Beetroot Powder & Superfoods`,
-    description: site.description,
+    description: socialDescription(site.description),
     images: [{ url: site.ogImage, alt: `${site.name} — organic superfood powders` }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} | Organic Beetroot Powder & Superfoods`,
-    description: site.description,
+    description: socialDescription(site.description),
     images: [site.ogImage],
   },
 };

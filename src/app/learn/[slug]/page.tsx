@@ -23,7 +23,6 @@ export async function generateMetadata({
     title: article.metaTitle,
     description: article.metaDescription,
     path: `/learn/${slug}`,
-    image: "/images/beetroot.jpg",
     imageAlt: article.title,
   });
 

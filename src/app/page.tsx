@@ -20,9 +20,9 @@ import { articles } from "@/lib/data/articles";
 export const metadata: Metadata = {
   // The root layout's title.template doesn't apply to its own segment's page,
   // so the brand suffix is spelled out here.
-  title: { absolute: "Organic Beetroot Powder for Heart Health & Endurance | Apothecary Wellness" },
+  title: { absolute: "Organic Beetroot Powder for Heart Health | Apothecary Wellness" },
   description:
-    "Cold-milled organic beetroot powder with ~250mg dietary nitrate per scoop. Single-origin, third-party lab tested, no fillers. Supports heart health and endurance.",
+    "Cold-milled organic beetroot powder with ~250mg dietary nitrate per scoop. Single-origin, lab tested, no fillers. Supports heart health and endurance.",
   alternates: { canonical: "/" },
 };
 

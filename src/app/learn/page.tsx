@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     title: "Learn: Beetroot Powder Guides & Superfood Science",
     description:
       "Practical, science-grounded guides to beetroot powder and our other botanicals — benefits, dosage, timing, and honest comparisons from Apothecary Wellness.",
-    path: "/learn", image: "/images/beetroot.jpg",
+    path: "/learn",
   }),
 };
 
