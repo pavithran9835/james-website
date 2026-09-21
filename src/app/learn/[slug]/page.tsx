@@ -190,7 +190,7 @@ export default async function ArticlePage({ params }: PageProps<"/learn/[slug]">
         {beetroot && (
           <aside className="bg-surface-container-low border border-outline-variant/20 p-6 md:p-10 mb-12">
             <span className="font-label-caps text-label-caps uppercase tracking-widest text-tertiary mb-3 block">
-              From the Apothecary
+              From Beamo
             </span>
             <h2 className="font-headline-md text-xl md:text-2xl text-primary mb-3">
               {beetroot.name} — ${beetroot.price.toFixed(2)}

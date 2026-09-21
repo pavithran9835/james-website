@@ -25,10 +25,10 @@ export async function generateMetadata({
   const product = products.find((p) => p.slug === slug);
   if (!product) return {};
 
-  // Keep the full title (with the " | Apothecary Wellness" template suffix,
-  // 22 chars) within Google's ~60-char display limit.
+  // Keep the full title (with the " | Beamo" template suffix, 8 chars)
+  // within Google's ~60-char display limit.
   const withBenefit = `${product.name} — ${product.benefitLabel}`;
-  const title = withBenefit.length <= 38 ? withBenefit : product.name;
+  const title = withBenefit.length <= 52 ? withBenefit : product.name;
   const ogImage = product.image?.src ?? site.ogImage;
 
   // The short card blurb alone is too thin for a meta description (~155

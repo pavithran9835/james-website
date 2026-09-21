@@ -8,12 +8,12 @@ import { site, absoluteUrl, pageOpenGraph } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Questions about our beetroot powder, an order, or wholesale? Email the Apothecary Wellness team — we reply within two business days.",
+    "Questions about our beetroot powder, an order, or wholesale? Email the Beamo team — we reply within two business days.",
   alternates: { canonical: "/contact" },
   ...pageOpenGraph({
     title: "Contact Us",
     description:
-      "Questions about our beetroot powder, an order, or wholesale? Email the Apothecary Wellness team — we reply within two business days.",
+      "Questions about our beetroot powder, an order, or wholesale? Email the Beamo team — we reply within two business days.",
     path: "/contact",
   }),
 };

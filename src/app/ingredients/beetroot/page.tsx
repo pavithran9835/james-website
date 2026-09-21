@@ -157,7 +157,7 @@ export default function BeetrootPage() {
                 &ldquo;A nutritional powerhouse for the modern era.&rdquo;
               </p>
               <p className="font-label-caps text-label-caps mt-4 text-on-secondary-container/70">
-                — The Apothecary Wellness Standard
+                — The Beamo Standard
               </p>
             </div>
           </div>
@@ -208,7 +208,7 @@ export default function BeetrootPage() {
             <p className="font-body-md text-on-surface-variant">
               Whether in the boardroom or on the trail, the physiological
               advantages of high-nitrate supplementation are undeniable. Our
-              Apothecary grade powder integrates seamlessly into your morning
+              Beamo-grade powder integrates seamlessly into your morning
               ritual.
             </p>
             <Link

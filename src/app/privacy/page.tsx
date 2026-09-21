@@ -35,7 +35,7 @@ const sections = [
   },
   {
     heading: "Contact",
-    body: `Questions about this policy can be sent to hello@apothecarywellness.com.`,
+    body: `Questions about this policy can be sent to hello@beamo.com.`,
   },
 ];
 

@@ -39,7 +39,7 @@ const sections = [
   },
   {
     heading: "Contact",
-    body: `Questions about these terms can be sent to hello@apothecarywellness.com.`,
+    body: `Questions about these terms can be sent to hello@beamo.com.`,
   },
 ];
 

@@ -218,7 +218,7 @@ export default function MoringaPage() {
           </div>
           <Quote
             quote="Moringa isn't just a supplement; it's a recalibration of the body's natural baseline. We source only the 'Miracle Leaf' from high-altitude volcanic soil to ensure maximum mineral density."
-            author="The Apothecary Wellness Standard"
+            author="The Beamo Standard"
             role=""
           />
         </Reveal>

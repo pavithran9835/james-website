@@ -8,12 +8,12 @@ import { pageOpenGraph } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Beetroot Guides & Superfood Science",
   description:
-    "Practical, science-grounded guides to beetroot powder and our other botanicals — benefits, dosage, timing, and honest comparisons from Apothecary Wellness.",
+    "Practical, science-grounded guides to beetroot powder and our other botanicals — benefits, dosage, timing, and honest comparisons from Beamo.",
   alternates: { canonical: "/learn" },
   ...pageOpenGraph({
     title: "Beetroot Guides & Superfood Science",
     description:
-      "Practical, science-grounded guides to beetroot powder and our other botanicals — benefits, dosage, timing, and honest comparisons from Apothecary Wellness.",
+      "Practical, science-grounded guides to beetroot powder and our other botanicals — benefits, dosage, timing, and honest comparisons from Beamo.",
     path: "/learn",
   }),
 };

@@ -10,7 +10,7 @@ import {
 } from "react";
 import { products } from "@/lib/data/products";
 
-const STORAGE_KEY = "apothecary-cart";
+const STORAGE_KEY = "beamo-cart";
 
 export interface CartLine {
   productId: string;

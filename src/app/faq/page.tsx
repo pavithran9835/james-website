@@ -9,12 +9,12 @@ import { products } from "@/lib/data/products";
 export const metadata: Metadata = {
   title: "FAQ: Beetroot Powder & Orders",
   description:
-    "Answers to common questions about Apothecary Wellness beetroot powder and botanicals — usage, daily dosing, quality testing, shipping, and wholesale.",
+    "Answers to common questions about Beamo beetroot powder and botanicals — usage, daily dosing, quality testing, shipping, and wholesale.",
   alternates: { canonical: "/faq" },
   ...pageOpenGraph({
     title: "FAQ: Beetroot Powder & Orders",
     description:
-      "Answers to common questions about Apothecary Wellness beetroot powder and botanicals — usage, daily dosing, quality testing, shipping, and wholesale.",
+      "Answers to common questions about Beamo beetroot powder and botanicals — usage, daily dosing, quality testing, shipping, and wholesale.",
     path: "/faq",
   }),
 };
@@ -67,7 +67,7 @@ const faqGroups: { title: string; id: string; faqs: { question: string; answer: 
       {
         question: "What is your return policy?",
         answer:
-          "If your order arrives damaged or isn't what you expected, contact us at hello@apothecarywellness.com and we'll make it right. Reach out within 30 days of delivery.",
+          "If your order arrives damaged or isn't what you expected, contact us at hello@beamo.com and we'll make it right. Reach out within 30 days of delivery.",
       },
       {
         question: "Do you offer wholesale pricing?",

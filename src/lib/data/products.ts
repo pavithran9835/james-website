@@ -262,7 +262,7 @@ export const products: Product[] = [
     benefitTag: "Energy",
     benefitLabel: "Curated Bundle",
     description:
-      "Experience the full spectrum of Apothecary Wellness with our signature powders.",
+      "Experience the full spectrum of Beamo with our signature powders.",
     longDescription:
       "One jar each of Beetroot Powder, Moringa Powder, and Amla Detox Powder — our three foundational botanicals, bundled at a price below buying them individually. It's the easiest way to build a rotation that covers cardiovascular support, everyday energy, and antioxidant/detox in one order, and the bundle price reflects the full-size 42/38/34 jars, not trial sizes.",
     highlights: [

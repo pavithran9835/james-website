@@ -12,12 +12,12 @@ import { pageOpenGraph } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Our Process",
   description:
-    "How Apothecary Wellness sources, tests, and verifies every botanical — from soil to scoop.",
+    "How Beamo sources, tests, and verifies every botanical — from soil to scoop.",
   alternates: { canonical: "/science" },
   ...pageOpenGraph({
     title: "Our Process",
     description:
-      "How Apothecary Wellness sources, tests, and verifies every botanical — from soil to scoop.",
+      "How Beamo sources, tests, and verifies every botanical — from soil to scoop.",
     path: "/science",
   }),
 };

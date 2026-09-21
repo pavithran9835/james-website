@@ -234,7 +234,7 @@ export const articles: Article[] = [
         heading: "How Each Format Is Made — and What That Does to the Beet",
         paragraphs: [
           "Beetroot juice is made by pressing fresh beets and discarding the pulp. That process extracts the water-soluble compounds but leaves the fiber — and some fiber-bound nutrients — behind. Fresh juice is also inherently perishable: it needs refrigeration, has a short window before its pigments and nutrients begin to degrade, and commercial versions are often heat-treated to extend shelf life.",
-          "Powder takes the opposite approach. Instead of removing the water and everything attached to the solids, a well-made powder removes only the water. At Apothecary Wellness, we dry single-origin, regeneratively farmed beets at low temperature and cold-mill them — a method chosen specifically to protect heat-sensitive compounds like betalains and folate. The result is the whole root, concentrated and stabilized, rather than an extract of it. You can read more about the underlying science in our [beetroot deep-dive](/ingredients/beetroot).",
+          "Powder takes the opposite approach. Instead of removing the water and everything attached to the solids, a well-made powder removes only the water. At Beamo, we dry single-origin, regeneratively farmed beets at low temperature and cold-mill them — a method chosen specifically to protect heat-sensitive compounds like betalains and folate. The result is the whole root, concentrated and stabilized, rather than an extract of it. You can read more about the underlying science in our [beetroot deep-dive](/ingredients/beetroot).",
         ],
       },
       {
@@ -301,7 +301,7 @@ export const articles: Article[] = [
     faq: [
       {
         question: "Is beetroot powder as good as beetroot juice?",
-        answer: "For dietary nitrate, yes — a well-made powder delivers a comparable nitrate dose in a smaller, shelf-stable serving. One 5g scoop of Apothecary Wellness Beetroot Powder provides approximately 250mg of dietary nitrate, and low-temperature drying with cold-milling protects heat-sensitive compounds like betalains and folate.",
+        answer: "For dietary nitrate, yes — a well-made powder delivers a comparable nitrate dose in a smaller, shelf-stable serving. One 5g scoop of Beamo Beetroot Powder provides approximately 250mg of dietary nitrate, and low-temperature drying with cold-milling protects heat-sensitive compounds like betalains and folate.",
       },
       {
         question: "How much beetroot juice equals one scoop of beetroot powder?",

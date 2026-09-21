@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { footerNav } from "@/lib/data/nav";
 import { site } from "@/lib/seo";
@@ -20,9 +21,13 @@ export function Footer() {
     <footer className="bg-surface-container-low border-t-[0.5px] border-outline-variant py-16 px-margin-mobile md:px-margin-desktop">
       <div className="grid grid-cols-1 md:grid-cols-5 gap-gutter max-w-container-max mx-auto">
         <div className="md:col-span-2 space-y-6">
-          <div className="text-headline-md font-headline-md text-primary">
-            {site.name}
-          </div>
+          <Image
+            src="/images/beamo-logo-full.jpg"
+            alt={`${site.name} — ${site.tagline}`}
+            width={1536}
+            height={900}
+            className="h-20 w-auto"
+          />
           <p className="font-body-md text-on-surface-variant text-sm leading-relaxed max-w-sm">
             Organic beetroot powder and superfood botanicals — cold-milled,
             single-origin, and third-party lab tested. Bridging ancient herbal

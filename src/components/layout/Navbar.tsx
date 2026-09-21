@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -34,11 +35,15 @@ export function Navbar() {
       )}
     >
       <div className="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-20 max-w-container-max mx-auto">
-        <Link
-          href="/"
-          className="text-xl md:text-headline-md font-headline-md font-bold tracking-tight text-primary"
-        >
-          {site.name}
+        <Link href="/" className="flex items-center shrink-0" aria-label={site.name}>
+          <Image
+            src="/images/beamo-wordmark.jpg"
+            alt={site.name}
+            width={1536}
+            height={580}
+            priority
+            className="h-8 md:h-10 w-auto"
+          />
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
