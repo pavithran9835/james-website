@@ -37,10 +37,10 @@ export function Navbar() {
       <div className="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-20 max-w-container-max mx-auto">
         <Link href="/" className="flex items-center shrink-0" aria-label={site.name}>
           <Image
-            src="/images/beamo-wordmark.jpg"
+            src="/images/beamo-wordmark.png"
             alt={site.name}
-            width={1536}
-            height={580}
+            width={720}
+            height={191}
             priority
             className="h-8 md:h-10 w-auto"
           />

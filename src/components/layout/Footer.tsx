@@ -22,10 +22,10 @@ export function Footer() {
       <div className="grid grid-cols-1 md:grid-cols-5 gap-gutter max-w-container-max mx-auto">
         <div className="md:col-span-2 space-y-6">
           <Image
-            src="/images/beamo-logo-full.jpg"
-            alt={`${site.name} — ${site.tagline}`}
-            width={1536}
-            height={900}
+            src="/images/beamo-logo-full.png"
+            alt={`${site.name} — Pure, Natural, Powerful`}
+            width={920}
+            height={383}
             className="h-20 w-auto"
           />
           <p className="font-body-md text-on-surface-variant text-sm leading-relaxed max-w-sm">
