@@ -25,7 +25,7 @@ export function Footer() {
             src="/images/beamo-logo-full.png"
             alt={`${site.name} — Pure, Natural, Powerful`}
             width={920}
-            height={383}
+            height={295}
             className="h-20 w-auto"
           />
           <p className="font-body-md text-on-surface-variant text-sm leading-relaxed max-w-sm">

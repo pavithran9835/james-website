@@ -40,7 +40,7 @@ export function Navbar() {
             src="/images/beamo-wordmark.png"
             alt={site.name}
             width={720}
-            height={191}
+            height={194}
             priority
             className="h-8 md:h-10 w-auto"
           />
